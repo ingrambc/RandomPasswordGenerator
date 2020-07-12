@@ -4,6 +4,8 @@ var upCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowCase = "abcdefghijklmnopqrstuvwxyz";
 var numString = "01234567890"
 var specialString = "!@#$%^&*(){}:;<>_+-=";
+var passLengthMax = 128;
+var passLengthMin = 8;
 
 // Write password to the #password input
 function writePassword() {
@@ -25,42 +27,42 @@ function generatePassword() {
   if(chosen){
     charList+= upCase;
   }
-  console.log(charList);
+  //console.log(charList);
 
   //add Lowers case letters if chosen
   chosen = confirm("Do you want Lower Case letters in your password?")
   if(chosen){
     charList += lowCase;
   }
-  console.log(charList);
+  //console.log(charList);
 
   //add numbers if chosen
   chosen = confirm("Do you want numbers in your password?")
   if(chosen){
     charList += numString;
   }
-  console.log(charList);
+  //console.log(charList);
 
   //add special chars if chosen
   chosen = confirm("Do you want Special Charaters in your password?")
   if(chosen){
     charList += specialString;
   }
-  console.log(charList);
+  //console.log(charList);
 
   //get length of password
   passLength = prompt("How long do you want you password, from 8 to 128 characters")
-  while(length < 8 && prompt > length){
-    length = prompt("you entered " + length + ", please enter a number from 8 to 128")
+  while(passLength < passLengthMin || passLength > passLengthMax || isNaN(passLength)){
+    passLength = prompt("you entered " + passLength + ", please enter a number from 8 to 128")
   }
-  console.log(length);
+  //console.log(passLength);
 
   //generate password
   for (let i = 0; i < passLength; i++) {
     randomNum = Math.floor(Math.random() * charList.length);
-          console.log("random Num = " + randomNum);
+  //        console.log("random Num = " + randomNum);
     password += charList.charAt(randomNum);
-          console.log(password);
+  //        console.log(password);
   }
 
   return password;
